@@ -22,13 +22,16 @@ public class LaminaPractica3 extends JPanel {
         tFieldNum1=new JTextField(10);
         tFieldNum2=new JTextField(10);
         tFieldDen1=new JTextField(10);
+       // tFieldDen1.setAlignmentX(JTextField.RIGHT);
         tFieldDen2=new JTextField(10);
 
         resultados=new JTextArea(3,3);
-        resultados.setBackground(Color.LIGHT_GRAY);
+        //resultados.setBackground(Color.LIGHT_GRAY);
+        resultados.setBorder(BorderFactory.createTitledBorder("RESULTADOS"));
         JPanel panelOperacion=new JPanel();
 
         panelOperacion.setLayout(new GridLayout(4,1));
+        panelOperacion.setBorder(BorderFactory.createTitledBorder("OPERACIONES"));
         ButtonGroup grupo=new ButtonGroup();
         suma=new JRadioButton("Suma");
         resta=new JRadioButton("Resta");
@@ -48,22 +51,41 @@ public class LaminaPractica3 extends JPanel {
         calcular=new JButton("Calcular");
         limpiar=new JButton("Limpiar");
 
+//estas lineas comentadas es lo mismo  que las siguintes pero con weightx y weighty a 0.0 (no crecen los componentes al estirar la ventana
+//        add(labelNumerador1,gbc.Constrains(0,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(tFieldNum1,gbc.Constrains(1,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(labelDenominador1,gbc.Constrains(2,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(tFieldDen1,gbc.Constrains(3,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//
+//        add(labelNumerador2,gbc.Constrains(0,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(tFieldNum2,gbc.Constrains(1,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(LabelDenominador2,gbc.Constrains(2,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(tFieldDen2,gbc.Constrains(3,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//
+//       add(resultados,gbc.Constrains(0,2,3,1,0.0,0.0,GridBagConstraints.BOTH,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//
+//        add(panelOperacion,gbc.Constrains(3,2,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//
+//        add(calcular,gbc.Constrains(2,3,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//        add(limpiar,gbc.Constrains(3,3,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+//
+
         add(labelNumerador1,gbc.Constrains(0,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
-        add(tFieldNum1,gbc.Constrains(1,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(tFieldNum1,gbc.Constrains(1,0,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
         add(labelDenominador1,gbc.Constrains(2,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
-        add(tFieldDen1,gbc.Constrains(3,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(tFieldDen1,gbc.Constrains(3,0,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
 
         add(labelNumerador2,gbc.Constrains(0,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
-        add(tFieldNum2,gbc.Constrains(1,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(tFieldNum2,gbc.Constrains(1,1,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
         add(LabelDenominador2,gbc.Constrains(2,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
-        add(tFieldDen2,gbc.Constrains(3,1,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(tFieldDen2,gbc.Constrains(3,1,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
 
-       add(resultados,gbc.Constrains(0,2,3,1,0.0,0.0,GridBagConstraints.BOTH,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(resultados,gbc.Constrains(0,2,3,1,1.0,1.0,GridBagConstraints.BOTH,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
 
-        add(panelOperacion,gbc.Constrains(3,2,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(panelOperacion,gbc.Constrains(3,2,1,1,1.0,1.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
 
-        add(calcular,gbc.Constrains(2,3,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
-        add(limpiar,gbc.Constrains(3,3,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(calcular,gbc.Constrains(2,3,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
+        add(limpiar,gbc.Constrains(3,3,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
 
 
 
