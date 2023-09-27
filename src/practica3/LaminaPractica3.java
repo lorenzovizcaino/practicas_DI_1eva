@@ -141,6 +141,13 @@ public class LaminaPractica3 extends JPanel {
                 }
                 if(multiplicacion.isSelected()){
                     racionalResultado.multiplicar(racional2A,racional2B);
+                    if((resultados.getText()).equals("")){
+
+                    }else{
+                        resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"*"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }
                     resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"*"+
                             String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
                             String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
@@ -148,9 +155,16 @@ public class LaminaPractica3 extends JPanel {
 
                 if(division.isSelected()){
                     racionalResultado.dividir(racional2A,racional2B);
-                    resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"/"+
-                            String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                            String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    if((resultados.getText()).equals("")){
+                        resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"/"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }else{
+                        resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"/"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }
+
                 }
 
             }
