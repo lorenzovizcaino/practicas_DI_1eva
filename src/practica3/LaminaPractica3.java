@@ -2,6 +2,8 @@ package practica3;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LaminaPractica3 extends JPanel {
 
@@ -11,6 +13,9 @@ public class LaminaPractica3 extends JPanel {
     private JRadioButton suma, resta, multiplicacion, division;
     private JButton calcular, limpiar;
     private GBCConstrains gbc=new GBCConstrains();
+    private Racional2 racional2A;
+    private Racional2 racional2B;
+    private Racional2 racionalResultado;
 
     public LaminaPractica3(){
         setLayout(new GridBagLayout());
@@ -87,7 +92,69 @@ public class LaminaPractica3 extends JPanel {
         add(calcular,gbc.Constrains(2,3,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
         add(limpiar,gbc.Constrains(3,3,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,10,5,10)));
 
+        limpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tFieldNum1.setText("");
+                tFieldNum2.setText("");
+                tFieldDen1.setText("");
+                tFieldDen2.setText("");
+                resultados.setText("");
+            }
+        });
 
+        calcular.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                racional2A=new Racional2(Integer.parseInt(tFieldNum1.getText()) ,Integer.parseInt(tFieldDen1.getText()));
+                racional2B=new Racional2(Integer.parseInt(tFieldNum2.getText()) ,Integer.parseInt(tFieldDen2.getText()));
+                racionalResultado=new Racional2();
+
+                if(suma.isSelected()){
+                    racionalResultado.sumar(racional2A,racional2B);
+                    if((resultados.getText()).equals("")){
+                        System.out.println("Hola");
+                        resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"+"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }else{
+
+                        resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"+"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }
+
+
+                }
+                if(resta.isSelected()){
+                    racionalResultado.restar(racional2A,racional2B);
+                    if((resultados.getText()).equals("")){
+                        resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"-"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }else{
+                        resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"-"+
+                                String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                                String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                    }
+
+                }
+                if(multiplicacion.isSelected()){
+                    racionalResultado.multiplicar(racional2A,racional2B);
+                    resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"*"+
+                            String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                            String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                }
+
+                if(division.isSelected()){
+                    racionalResultado.dividir(racional2A,racional2B);
+                    resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"/"+
+                            String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
+                            String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                }
+
+            }
+        });
 
     }
 }
