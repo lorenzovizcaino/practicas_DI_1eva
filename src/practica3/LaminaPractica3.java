@@ -90,7 +90,9 @@ public class LaminaPractica3 extends JPanel {
 
         });
 
-        calcular.addActionListener(e-> {
+
+
+        calcular.addActionListener( e->{
 
 
 
@@ -101,14 +103,14 @@ public class LaminaPractica3 extends JPanel {
                         if(suma.isSelected()){
                             racionalResultado.sumar(racional2A,racional2B);
                             if((resultados.getText()).equals("")){
-                                resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"+"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"+"+
+                                        racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                        racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }else{
 
-                                resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"+"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(resultados.getText()+"\n"+racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"+"+
+                                        racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                       racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }
 
 
@@ -116,27 +118,27 @@ public class LaminaPractica3 extends JPanel {
                         if(resta.isSelected()){
                             racionalResultado.restar(racional2A,racional2B);
                             if((resultados.getText()).equals("")){
-                                resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"-"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"-"+
+                                       racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                       racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }else{
-                                resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"-"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(resultados.getText()+"\n"+racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"-"+
+                                      racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                        racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }
 
                         }
                         if(multiplicacion.isSelected()){
                             racionalResultado.multiplicar(racional2A,racional2B);
                             if((resultados.getText()).equals("")){
-                                resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"*"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"*"+
+                                        racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                        racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
 
                             }else{
-                                resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"*"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(resultados.getText()+"\n"+racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"*"+
+                                        racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                      racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }
 
                         }
@@ -144,18 +146,20 @@ public class LaminaPractica3 extends JPanel {
                         if(division.isSelected()){
                             racionalResultado.dividir(racional2A,racional2B);
                             if((resultados.getText()).equals("")){
-                                resultados.setText(String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"/"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+
+                                resultados.setText(racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"/"+
+                                        racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                        racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }else{
-                                resultados.setText(resultados.getText()+"\n"+String.valueOf(racional2A.devolverNumerador())+"/"+String.valueOf(racional2A.devolverDenominador())+"/"+
-                                        String.valueOf(racional2B.devolverNumerador())+"/"+String.valueOf(racional2B.devolverDenominador())+"="+
-                                        String.valueOf(racionalResultado.devolverNumerador())+"/"+String.valueOf(racionalResultado.devolverDenominador()));
+                                resultados.setText(resultados.getText()+"\n"+racional2A.devolverNumerador()+"/"+racional2A.devolverDenominador()+"/"+
+                                       racional2B.devolverNumerador()+"/"+racional2B.devolverDenominador()+"="+
+                                      racionalResultado.devolverNumerador()+"/"+racionalResultado.devolverDenominador());
                             }
 
                         }
                     }catch (NumberFormatException nfe){
                         JOptionPane.showMessageDialog(this,"Has introducido un caracter NO Numerico o hay campos vacios","Error!!!!",JOptionPane.ERROR_MESSAGE);
+
 
                     }
 
