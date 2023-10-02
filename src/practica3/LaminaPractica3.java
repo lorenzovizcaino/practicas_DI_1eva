@@ -155,7 +155,7 @@ public class LaminaPractica3 extends JPanel {
 
                         }
                     }catch (NumberFormatException nfe){
-                        JOptionPane.showMessageDialog(this,"Has introducido un caracter NO Numerico o hay campos vacios");
+                        JOptionPane.showMessageDialog(this,"Has introducido un caracter NO Numerico o hay campos vacios","Error!!!!",JOptionPane.ERROR_MESSAGE);
 
                     }
 
