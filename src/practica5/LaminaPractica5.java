@@ -2,6 +2,10 @@ package practica5;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class LaminaPractica5 extends JPanel {
 
@@ -89,7 +93,7 @@ public class LaminaPractica5 extends JPanel {
         negro.setBackground(Color.BLACK);
         negro.setForeground(Color.WHITE);
         grisOscuro=new JButton("Gris Oscuro");
-        grisOscuro.setBackground(Color.darkGray);
+        grisOscuro.setBackground(Color.DARK_GRAY);
         grisOscuro.setForeground(Color.WHITE);
         gris=new JButton("Gris");
         gris.setBackground(Color.GRAY);
@@ -132,6 +136,97 @@ public class LaminaPractica5 extends JPanel {
         add(panelEste, BorderLayout.EAST);
 
 
+        scroll1.addAdjustmentListener(new AdjustmentListener() {
+            Color color;
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                textField1.setText(String.valueOf(scroll1.getValue()));
+                color=RecogerColor();
+                panelcentral.setBackground(color);
+            }
+        });
+
+        scroll2.addAdjustmentListener(new AdjustmentListener() {
+            Color color;
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                textField2.setText(String.valueOf(scroll2.getValue()));
+                color=RecogerColor();
+                panelcentral.setBackground(color);
+            }
+        });
+
+        scroll3.addAdjustmentListener(new AdjustmentListener() {
+            Color color;
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+                textField3.setText(String.valueOf(scroll3.getValue()));
+                color=RecogerColor();
+                panelcentral.setBackground(color);
+            }
+        });
+
+        textField1.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                scroll1.setValue(Integer.parseInt(textField1.getText()));
+            }
+        });
+
+        textField2.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                scroll2.setValue(Integer.parseInt(textField2.getText()));
+            }
+        });
+
+        textField3.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                scroll3.setValue(Integer.parseInt(textField3.getText()));
+            }
+        });
+
+        negro.addActionListener(e->{
+            scroll1.setValue(0);
+            scroll2.setValue(0);
+            scroll3.setValue(0);
+        });
+
+        grisOscuro.addActionListener(e->{
+            scroll1.setValue(64);
+            scroll2.setValue(64);
+            scroll3.setValue(64);
+        });
+
+        gris.addActionListener(e->{
+            scroll1.setValue(128);
+            scroll2.setValue(128);
+            scroll3.setValue(128);
+        });
+
+        grisClaro.addActionListener(e->{
+            scroll1.setValue(192);
+            scroll2.setValue(192);
+            scroll3.setValue(192);
+        });
+
+
 
 
 
@@ -140,10 +235,13 @@ public class LaminaPractica5 extends JPanel {
 
     }
 
-
-
-
-
+    private Color RecogerColor() {
+        int rojo=scroll1.getValue();
+        int verde=scroll2.getValue();
+        int azul=scroll3.getValue();
+        Color color=new Color(rojo,verde,azul);
+        return color;
+    }
 
 
 }
