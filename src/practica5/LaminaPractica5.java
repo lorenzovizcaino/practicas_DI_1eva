@@ -39,6 +39,8 @@ public class LaminaPractica5 extends JPanel {
     private JButton rojo;
     private JButton rosa;
     private JPanel panelEste;
+    private Color []colores={Color.BLACK,Color.DARK_GRAY,Color.GRAY,Color.LIGHT_GRAY,Color.WHITE,Color.MAGENTA,Color.BLUE,Color.CYAN,Color.GREEN,Color.YELLOW,Color.ORANGE,Color.RED,Color.PINK};
+    private String[] coloresString={"Negro","Gris Oscuro","Gris","Gris Claro","Blanco","Magenta","Azul","Cyan","Verde","Amarillo","Naranja","Rojo","Rosa"};
 
     public LaminaPractica5(){
         setLayout(new BorderLayout());
@@ -170,7 +172,7 @@ public class LaminaPractica5 extends JPanel {
         textField1.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-
+                textField1.selectAll();
             }
 
             @Override
@@ -182,7 +184,7 @@ public class LaminaPractica5 extends JPanel {
         textField2.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-
+                textField2.selectAll();
             }
 
             @Override
@@ -194,7 +196,7 @@ public class LaminaPractica5 extends JPanel {
         textField3.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-
+                textField3.selectAll();
             }
 
             @Override
@@ -226,6 +228,68 @@ public class LaminaPractica5 extends JPanel {
             scroll2.setValue(192);
             scroll3.setValue(192);
         });
+
+        blanco.addActionListener(e->{
+            scroll1.setValue(255);
+            scroll2.setValue(255);
+            scroll3.setValue(255);
+        });
+
+        magenta.addActionListener(e->{
+            scroll1.setValue(255);
+            scroll2.setValue(0);
+            scroll3.setValue(255);
+        });
+
+        azul.addActionListener(e->{
+            scroll1.setValue(0);
+            scroll2.setValue(0);
+            scroll3.setValue(255);
+        });
+
+        cyan.addActionListener(e->{
+            scroll1.setValue(0);
+            scroll2.setValue(255);
+            scroll3.setValue(255);
+        });
+
+        verde.addActionListener(e->{
+            scroll1.setValue(0);
+            scroll2.setValue(255);
+            scroll3.setValue(0);
+        });
+
+        amarillo.addActionListener(e->{
+            scroll1.setValue(255);
+            scroll2.setValue(255);
+            scroll3.setValue(0);
+        });
+
+        naranja.addActionListener(e->{
+            scroll1.setValue(255);
+            scroll2.setValue(200);
+            scroll3.setValue(0);
+        });
+
+        rojo.addActionListener(e->{
+            scroll1.setValue(255);
+            scroll2.setValue(0);
+            scroll3.setValue(0);
+        });
+
+        rosa.addActionListener(e->{
+            scroll1.setValue(255);
+            scroll2.setValue(175);
+            scroll3.setValue(175);
+        });
+
+
+
+
+
+
+
+
 
 
 
