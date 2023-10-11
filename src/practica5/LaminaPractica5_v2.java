@@ -7,41 +7,26 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class LaminaPractica5 extends JPanel {
-
-
-
+public class LaminaPractica5_v2 extends JPanel {
     private JScrollBar scroll1;
     private JScrollBar scroll2;
     private JScrollBar scroll3;
     private JPanel panelWest;
     private JPanel panelcentral;
+    private JPanel panelSur;
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
-    private JPanel panelSur;
-
-    private JButton negro;
-    private JButton grisOscuro;
-    private JButton gris;
-    private JButton grisClaro;
-    private JButton blanco;
-
-    private JButton magenta;
-    private JButton azul;
-    private JButton cyan;
-    private JButton verde;
-    private JButton amarillo;
-    private JButton naranja;
-    private JButton rojo;
-    private JButton rosa;
-    private JPanel panelEste;
+    private PanelBotonesColor panelBotonesColor;
 
 
-    public LaminaPractica5(){
+
+
+
+    public LaminaPractica5_v2(){
         setLayout(new BorderLayout());
         //JLabel.setOpaque(true) poner color de fondo a un label
         panelWest=new JPanel();
@@ -87,57 +72,11 @@ public class LaminaPractica5 extends JPanel {
         panelSur.add(label3);
         panelSur.add(textField3);
         add(panelSur,BorderLayout.SOUTH);
-
-        panelEste=new JPanel();
-        panelEste.setLayout(new GridLayout(13,1,0,2));
-        negro=new JButton("Negro");
-        negro.setBackground(Color.BLACK);
-        negro.setForeground(Color.WHITE);
-
-        grisOscuro=new JButton("Gris Oscuro");
-        grisOscuro.setBackground(Color.DARK_GRAY);
-        grisOscuro.setForeground(Color.WHITE);
-        gris=new JButton("Gris");
-        gris.setBackground(Color.GRAY);
-        //gris.setForeground(Color.WHITE);
-        grisClaro=new JButton("Gris Claro");
-        grisClaro.setBackground(Color.lightGray);
-        blanco=new JButton("Blanco");
-        blanco.setBackground(Color.white);
-        magenta=new JButton("Magenta");
-        magenta.setBackground(Color.magenta);
-        azul=new JButton("Azul");
-        azul.setBackground(Color.blue);
-        azul.setForeground(Color.WHITE);
-        cyan=new JButton("Cyan");
-        cyan.setBackground(Color.cyan);
-        verde=new JButton("Verde");
-        verde.setBackground(Color.GREEN);
-        amarillo=new JButton("Amarillo");
-        amarillo.setBackground(Color.YELLOW);
-        naranja=new JButton("Naranja");
-        naranja.setBackground(Color.ORANGE);
-        rojo=new JButton("Rojo");
-        rojo.setBackground(Color.RED);
-        rosa=new JButton("Rosa");
-        rosa.setBackground(Color.PINK);
-        panelEste.add(negro);
-        panelEste.add(grisOscuro);
-        panelEste.add(gris);
-        panelEste.add(grisClaro);
-        panelEste.add(blanco);
-
-        panelEste.add(magenta);
-        panelEste.add(azul);
-        panelEste.add(cyan);
-        panelEste.add(verde);
-        panelEste.add(amarillo);
-        panelEste.add(naranja);
-        panelEste.add(rojo);
-        panelEste.add(rosa);
-        add(panelEste, BorderLayout.EAST);
+        panelBotonesColor=new PanelBotonesColor();
+        add(panelBotonesColor,BorderLayout.EAST);
 
 
+        //empieza la funcionalidad
         scroll1.addAdjustmentListener(new AdjustmentListener() {
             Color color;
             @Override
@@ -204,83 +143,6 @@ public class LaminaPractica5 extends JPanel {
             }
         });
 
-        negro.addActionListener(e->{
-            scroll1.setValue(0);
-            scroll2.setValue(0);
-            scroll3.setValue(0);
-        });
-
-        grisOscuro.addActionListener(e->{
-            scroll1.setValue(64);
-            scroll2.setValue(64);
-            scroll3.setValue(64);
-        });
-
-        gris.addActionListener(e->{
-            scroll1.setValue(128);
-            scroll2.setValue(128);
-            scroll3.setValue(128);
-        });
-
-        grisClaro.addActionListener(e->{
-            scroll1.setValue(192);
-            scroll2.setValue(192);
-            scroll3.setValue(192);
-        });
-
-        blanco.addActionListener(e->{
-            scroll1.setValue(255);
-            scroll2.setValue(255);
-            scroll3.setValue(255);
-        });
-
-        magenta.addActionListener(e->{
-            scroll1.setValue(255);
-            scroll2.setValue(0);
-            scroll3.setValue(255);
-        });
-
-        azul.addActionListener(e->{
-            scroll1.setValue(0);
-            scroll2.setValue(0);
-            scroll3.setValue(255);
-        });
-
-        cyan.addActionListener(e->{
-            scroll1.setValue(0);
-            scroll2.setValue(255);
-            scroll3.setValue(255);
-        });
-
-        verde.addActionListener(e->{
-            scroll1.setValue(0);
-            scroll2.setValue(255);
-            scroll3.setValue(0);
-        });
-
-        amarillo.addActionListener(e->{
-            scroll1.setValue(255);
-            scroll2.setValue(255);
-            scroll3.setValue(0);
-        });
-
-        naranja.addActionListener(e->{
-            scroll1.setValue(255);
-            scroll2.setValue(200);
-            scroll3.setValue(0);
-        });
-
-        rojo.addActionListener(e->{
-            scroll1.setValue(255);
-            scroll2.setValue(0);
-            scroll3.setValue(0);
-        });
-
-        rosa.addActionListener(e->{
-            scroll1.setValue(255);
-            scroll2.setValue(175);
-            scroll3.setValue(175);
-        });
 
 
 
@@ -295,6 +157,101 @@ public class LaminaPractica5 extends JPanel {
 
 
 
+
+
+
+    }
+
+    class PanelBotonesColor extends JPanel {
+        private Color[]colores={Color.BLACK,Color.DARK_GRAY,Color.GRAY,Color.LIGHT_GRAY,Color.WHITE,Color.MAGENTA,Color.BLUE,Color.CYAN,Color.GREEN,Color.YELLOW,Color.ORANGE,Color.RED,Color.PINK};
+        private String[] coloresString={"Negro","Gris Oscuro","Gris","Gris Claro","Blanco","Magenta","Azul","Cyan","Verde","Amarillo","Naranja","Rojo","Rosa"};
+        private JButton[] botones=new JButton[13];
+
+
+        public PanelBotonesColor(){
+            setLayout(new GridLayout(13,1,0,2));
+            for(int i=0;i< botones.length;i++){
+                botones[i]=new JButton(coloresString[i]);
+                botones[i].setBackground(colores[i]);
+                if(i<3){
+                    botones[i].setForeground(Color.WHITE);
+                }else{
+                    botones[i].setForeground(Color.BLACK);
+                }
+
+                add(botones[i]);
+                botones[i].addActionListener(e->{
+                    switch (e.getActionCommand()){
+                        case "Negro":
+                            scroll1.setValue(0);
+                            scroll2.setValue(0);
+                            scroll3.setValue(0);
+                            break;
+                        case "Gris Oscuro":
+                            scroll1.setValue(64);
+                            scroll2.setValue(64);
+                            scroll3.setValue(64);
+                            break;
+                        case "Gris":
+                            scroll1.setValue(128);
+                            scroll2.setValue(128);
+                            scroll3.setValue(128);
+                            break;
+                        case "Gris Claro":
+                            scroll1.setValue(192);
+                            scroll2.setValue(192);
+                            scroll3.setValue(192);
+                            break;
+                        case "Blanco":
+                            scroll1.setValue(255);
+                            scroll2.setValue(255);
+                            scroll3.setValue(255);
+                            break;
+                        case "Magenta":
+                            scroll1.setValue(255);
+                            scroll2.setValue(0);
+                            scroll3.setValue(255);
+                            break;
+                        case "Azul":
+                            scroll1.setValue(0);
+                            scroll2.setValue(0);
+                            scroll3.setValue(255);
+                            break;
+                        case "Cyan":
+                            scroll1.setValue(0);
+                            scroll2.setValue(255);
+                            scroll3.setValue(255);
+                            break;
+                        case "Verde":
+                            scroll1.setValue(0);
+                            scroll2.setValue(255);
+                            scroll3.setValue(0);
+                            break;
+                        case "Amarillo":
+                            scroll1.setValue(255);
+                            scroll2.setValue(255);
+                            scroll3.setValue(0);
+                            break;
+                        case "Naranja":
+                            scroll1.setValue(255);
+                            scroll2.setValue(200);
+                            scroll3.setValue(0);
+                            break;
+                        case "Rojo":
+                            scroll1.setValue(255);
+                            scroll2.setValue(0);
+                            scroll3.setValue(0);
+                            break;
+                        case "Rosa":
+                            scroll1.setValue(255);
+                            scroll2.setValue(175);
+                            scroll3.setValue(175);
+                            break;
+                    }
+                });
+
+            }
+        }
 
 
     }
@@ -309,3 +266,4 @@ public class LaminaPractica5 extends JPanel {
 
 
 }
+
