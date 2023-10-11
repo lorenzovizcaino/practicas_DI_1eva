@@ -44,7 +44,7 @@ public class LaminaPractica5 extends JPanel {
         setLayout(new BorderLayout());
         //JLabel.setOpaque(true) poner color de fondo a un label
         panelWest=new JPanel();
-        panelWest.setLayout(new GridLayout(1,3));
+        panelWest.setLayout(new GridLayout(1,3,5,0));
         scroll1=new JScrollBar(JScrollBar.VERTICAL,0,1,0,255);
         scroll2=new JScrollBar(JScrollBar.VERTICAL,0,1,0,255);
         scroll3=new JScrollBar(JScrollBar.VERTICAL,0,1,0,255);
@@ -65,20 +65,20 @@ public class LaminaPractica5 extends JPanel {
         label1.setBackground(Color.RED);
         label1.setFont(new Font("Verdana",Font.BOLD,14));
         label1.setHorizontalAlignment(JLabel.CENTER);
-        textField1=new JTextField(5);
+        textField1=new JTextField("0",5);
         label2=new JLabel("verde");
         label2.setOpaque(true);
         label2.setBackground(Color.GREEN);
         label2.setFont(new Font("Verdana",Font.BOLD,14));
         label2.setHorizontalAlignment(JLabel.CENTER);
-        textField2=new JTextField(5);
+        textField2=new JTextField("0",5);
         label3=new JLabel("azul");
         label3.setOpaque(true);
         label3.setBackground(Color.BLUE);
         label3.setFont(new Font("Verdana",Font.BOLD,14));
         label3.setForeground(Color.WHITE);
         label3.setHorizontalAlignment(JLabel.CENTER);
-        textField3=new JTextField(5);
+        textField3=new JTextField("0",5);
         panelSur.add(label1);
         panelSur.add(textField1);
         panelSur.add(label2);
@@ -88,10 +88,11 @@ public class LaminaPractica5 extends JPanel {
         add(panelSur,BorderLayout.SOUTH);
 
         panelEste=new JPanel();
-        panelEste.setLayout(new GridLayout(13,1));
+        panelEste.setLayout(new GridLayout(13,1,0,2));
         negro=new JButton("Negro");
         negro.setBackground(Color.BLACK);
         negro.setForeground(Color.WHITE);
+
         grisOscuro=new JButton("Gris Oscuro");
         grisOscuro.setBackground(Color.DARK_GRAY);
         grisOscuro.setForeground(Color.WHITE);
