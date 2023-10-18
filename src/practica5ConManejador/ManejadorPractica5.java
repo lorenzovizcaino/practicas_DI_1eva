@@ -133,6 +133,7 @@ public class ManejadorPractica5 implements ActionListener, FocusListener, Adjust
         }
 
     }
+    
 
     @Override
     public void focusLost(FocusEvent e) {
