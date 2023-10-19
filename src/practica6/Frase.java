@@ -101,8 +101,21 @@ class Frase {
             temp = temp.substring(espacio).trim();
          }
       }
-      
+      System.out.println(palabras);
       return palabras;
+   }
+
+   public String separarPalabrasMio(){
+      return cadena.replace(" ","-");
+   }
+
+   public String separarPalabrasMio2(){
+      String cadenaDevuelta="";
+      String [] palabras=cadena.split("\\s+");
+      for(String p:palabras){
+         cadenaDevuelta+=p+"-";
+      }
+      return cadenaDevuelta;
    }
    
    /**

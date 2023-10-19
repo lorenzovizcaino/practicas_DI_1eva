@@ -41,6 +41,11 @@ class PanelDibujo extends JPanel{
 	class PanelCentral extends JPanel {
 		JLabel[] etiquetas = new JLabel[5];
 		JTextField[] cuadros = new JTextField[5];
+		String[] tooltips={"Numero de letras que contiene la frase",
+							"Numero de letras que contiene la frase",
+							"Frase invertida",
+							"Palabras de la frase separadas",
+							"Primera posicion en la que aparece una vocal"};
 	
 		private static GridBagConstraints createConstraints(int gridx, int gridy, int gridwidth, int gridheight,
 				double weightx, double weighty, int fill, int anchor, Insets insets) {
@@ -63,12 +68,13 @@ class PanelDibujo extends JPanel{
 	
 			for (int i = 0; i < etiquetas.length; i++) {
 				etiquetas[i] = new JLabel();
-				
+
 				this.add(etiquetas[i], createConstraints(0, i, 1, 1, 0.0, 1.0,
 						GridBagConstraints.BOTH, GridBagConstraints.CENTER, new Insets(4, 5, 10, 4)));
 	
 				cuadros[i] = new JTextField(40);
-				
+				cuadros[i].setEnabled(false);
+				cuadros[i].setToolTipText(tooltips[i]);
 				Border border = BorderFactory.createRaisedSoftBevelBorder();
 	
 				cuadros[i].setBorder(border);
@@ -118,7 +124,7 @@ public class VentanaFrase extends JFrame {
 
 
 		cuadroFrase = new JTextField(20);
-		
+		cuadroFrase.setToolTipText("Frase con la que se va a trabajar");
 		botonProcesar = new JButton("Procesar frase");
 	
 
@@ -154,9 +160,22 @@ public class VentanaFrase extends JFrame {
 			panelCentral.cuadros[0].setText(String.valueOf(frase.contarLetras()));
 			panelCentral.cuadros[1].setText(String.valueOf(frase.contarPalabras()));
 			panelCentral.cuadros[2].setText(String.valueOf(frase.invertirFrase()));
-			panelCentral.cuadros[3].setText(String.valueOf(frase.separarPalabras()));
+			panelCentral.cuadros[3].setText(String.valueOf(frase.separarPalabrasMio2()));
 			panelCentral.cuadros[4].setText(String.valueOf(frase.primeraVocal()));
 
+		});
+
+		botonSalir.addActionListener(e->{
+			System.exit(0);
+		});
+
+		botonLimpiar.addActionListener(e->{
+			panelCentral.cuadros[0].setText("");
+			panelCentral.cuadros[1].setText("");
+			panelCentral.cuadros[2].setText("");
+			panelCentral.cuadros[3].setText("");
+			panelCentral.cuadros[4].setText("");
+			cuadroFrase.setText("");
 		});
 
 	}
