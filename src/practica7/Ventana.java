@@ -6,7 +6,7 @@ public class Ventana extends JFrame {
 
 
     public Ventana(){
-        setBounds(100,100,500,200);
+        setBounds(100,100,800,500);
         setTitle("Dibuja Rectangulos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         PanelPunto panelPunto=new PanelPunto();

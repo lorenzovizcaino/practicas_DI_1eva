@@ -1,14 +1,14 @@
 package practica7;
 
 public class Punto {
-    public class punto {
+
         //Atributos
         private double x;
         private double y;
         //Constructores
-        public punto() {}
+        public Punto() {}
 
-        public punto(double coordenadaX, double coordenadaY) {
+        public Punto(double coordenadaX, double coordenadaY) {
             x = coordenadaX;
             y = coordenadaY;
         }
@@ -38,7 +38,7 @@ public class Punto {
          * Devuelve la distancia entre 2 puntos: el punto que recibe el mensaje
          * y el punto que recibe como argumento
          */
-        public double calcularDistancia(punto p) {
+        public double calcularDistancia(Punto p) {
             double disX, disY;
             disX = p.obtenerX() - x;
             disY = p.obtenerY() - y;
@@ -46,4 +46,4 @@ public class Punto {
         }
     }
 
-}
+
