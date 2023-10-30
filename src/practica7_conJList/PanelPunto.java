@@ -1,4 +1,4 @@
-package practica7;
+package practica7_conJList;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ public class PanelPunto extends JPanel {
 
     GBCConstrains gbc=new GBCConstrains();
 
-    private JPanel coordenadas, centro, botones;
+    private JPanel coordenadas, centro, botones, jlist;
     private PanelEjecutar ejecutar=new PanelEjecutar();
     private JLabel lcoordenadaX1,lcoordenadaY1,lcoordenadaX2,lcoordenadaY2,lColorBorde,lColorInterno;
     protected JTextArea areaTexto;
@@ -18,6 +18,9 @@ public class PanelPunto extends JPanel {
 
     private String[] coloresString={"Negro","Gris Oscuro","Gris","Gris Claro","Blanco","Magenta","Azul","Cyan","Verde","Amarillo","Naranja","Rojo","Rosa"};
     protected JComboBox colorBorde, colorInterno;
+    protected DefaultListModel<String> listModel;
+    protected JList<String> lineList;
+    protected JButton sumarLista;
 
 
 
@@ -59,9 +62,17 @@ public class PanelPunto extends JPanel {
 
         centro=new JPanel();
         centro.setLayout(new GridLayout(1,2,10,10));
+        jlist=new JPanel();
+        jlist.setLayout(new BorderLayout());
+        listModel=new DefaultListModel<>();
+        lineList=new JList<>(listModel);
         areaTexto=new JTextArea();
+        sumarLista=new JButton("Añadir a la lista");
+        jlist.add(areaTexto,BorderLayout.NORTH);
+        jlist.add(lineList,BorderLayout.CENTER);
+        jlist.add(sumarLista,BorderLayout.SOUTH);
 
-        centro.add(areaTexto);
+        centro.add(jlist);
         centro.add(ejecutar);
 
         botones=new JPanel();
@@ -85,6 +96,8 @@ public class PanelPunto extends JPanel {
         limpiar.addActionListener(manejador);
         calcular.addActionListener(manejador);
         dibujar.addActionListener(manejador);
+        sumarLista.addActionListener(manejador);
+        lineList.addListSelectionListener(manejador);
 
         coordenadaX1.getDocument().addDocumentListener(manejador);
         coordenadaY1.getDocument().addDocumentListener(manejador);

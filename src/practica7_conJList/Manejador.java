@@ -1,12 +1,14 @@
-package practica7;
+package practica7_conJList;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Manejador implements ActionListener, DocumentListener {
+public class Manejador implements ActionListener, DocumentListener , ListSelectionListener {
 
     PanelPunto panelPunto;
     Punto punto1, punto2;
@@ -14,7 +16,7 @@ public class Manejador implements ActionListener, DocumentListener {
     private Color[]colores={Color.BLACK,Color.DARK_GRAY,Color.GRAY,Color.LIGHT_GRAY,Color.WHITE,Color.MAGENTA,Color.BLUE,Color.CYAN,Color.GREEN,Color.YELLOW,Color.ORANGE,Color.RED,Color.PINK};
 
 
-    public Manejador(PanelPunto panelPunto,PanelEjecutar panelEjecutar){
+    public Manejador(PanelPunto panelPunto, PanelEjecutar panelEjecutar){
         this.panelPunto=panelPunto;
         this.panelEjecutar=panelEjecutar;
     }
@@ -58,6 +60,11 @@ public class Manejador implements ActionListener, DocumentListener {
             panelEjecutar.repaint();
 
         }
+        if(e.getActionCommand()=="Añadir a la lista"){
+            String line=panelPunto.areaTexto.getText();
+            panelPunto.listModel.addElement(line);
+            panelPunto.areaTexto.setText("");
+        }
 
     }
 
@@ -78,6 +85,11 @@ public class Manejador implements ActionListener, DocumentListener {
 
     @Override
     public void changedUpdate(DocumentEvent e) {
+
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
 
     }
 }
