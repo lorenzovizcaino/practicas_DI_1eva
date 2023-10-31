@@ -7,6 +7,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Manejador implements ActionListener, DocumentListener , ListSelectionListener {
 
@@ -14,7 +15,9 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
     Punto punto1, punto2;
     PanelEjecutar panelEjecutar;
     private Color[]colores={Color.BLACK,Color.DARK_GRAY,Color.GRAY,Color.LIGHT_GRAY,Color.WHITE,Color.MAGENTA,Color.BLUE,Color.CYAN,Color.GREEN,Color.YELLOW,Color.ORANGE,Color.RED,Color.PINK};
-
+    private Cuadrado cuadrado;
+    private ArrayList<Cuadrado> cuadrados=new ArrayList<>();
+    private static int contador=0;
 
     public Manejador(PanelPunto panelPunto, PanelEjecutar panelEjecutar){
         this.panelPunto=panelPunto;
@@ -90,6 +93,20 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        cuadrado=new Cuadrado(contador,Integer.parseInt(panelPunto.coordenadaX1.getText()),Integer.parseInt(panelPunto.coordenadaY1.getText()),Integer.parseInt(panelPunto.areaTexto.getText()));
+
+
+        if (!e.getValueIsAdjusting()) {
+            int selectedIndex = panelPunto.lineList.getSelectedIndex();
+            if (selectedIndex != -1) {
+                // Realizar la acción en la línea seleccionada
+                String selectedLine = panelPunto.listModel.getElementAt(selectedIndex);
+
+                System.out.println(selectedIndex);
+                System.out.println("Línea seleccionada: " + selectedLine);
+                // Puedes reemplazar esta impresión con la acción que desees realizar en la línea.
+            }
+        }
 
     }
 }
