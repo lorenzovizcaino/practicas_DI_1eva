@@ -16,7 +16,7 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
     PanelEjecutar panelEjecutar;
     private Color[]colores={Color.BLACK,Color.DARK_GRAY,Color.GRAY,Color.LIGHT_GRAY,Color.WHITE,Color.MAGENTA,Color.BLUE,Color.CYAN,Color.GREEN,Color.YELLOW,Color.ORANGE,Color.RED,Color.PINK};
     private Cuadrado cuadrado;
-    private ArrayList<Cuadrado> cuadrados=new ArrayList<>();
+    private ArrayList<Cuadrado> cuadrados=new ArrayList<Cuadrado>();
     private static int contador=0;
 
     public Manejador(PanelPunto panelPunto, PanelEjecutar panelEjecutar){
@@ -64,6 +64,8 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
 
         }
         if(e.getActionCommand()=="Añadir a la lista"){
+            cuadrado=new Cuadrado(contador,Integer.parseInt(panelPunto.coordenadaX1.getText()),Integer.parseInt(panelPunto.coordenadaY1.getText()),(int)punto1.calcularDistancia(punto2),colores[panelPunto.colorBorde.getSelectedIndex()],colores[panelPunto.colorInterno.getSelectedIndex()]);
+            cuadrados.add(cuadrado);
             String line=panelPunto.areaTexto.getText();
             panelPunto.listModel.addElement(line);
             panelPunto.areaTexto.setText("");
@@ -93,7 +95,6 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        cuadrado=new Cuadrado(contador,Integer.parseInt(panelPunto.coordenadaX1.getText()),Integer.parseInt(panelPunto.coordenadaY1.getText()),Integer.parseInt(panelPunto.areaTexto.getText()));
 
 
         if (!e.getValueIsAdjusting()) {
@@ -101,10 +102,12 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
             if (selectedIndex != -1) {
                 // Realizar la acción en la línea seleccionada
                 String selectedLine = panelPunto.listModel.getElementAt(selectedIndex);
-
+                panelEjecutar.getCoordendas(cuadrados.get(selectedIndex).getX(),cuadrados.get(selectedIndex).getY(),cuadrados.get(selectedIndex).getDistancia() ,"RECTANGULO",cuadrados.get(selectedIndex).getColorBorde(),cuadrados.get(selectedIndex).getColorInterior());
+                panelEjecutar.repaint();
                 System.out.println(selectedIndex);
                 System.out.println("Línea seleccionada: " + selectedLine);
                 // Puedes reemplazar esta impresión con la acción que desees realizar en la línea.
+
             }
         }
 
