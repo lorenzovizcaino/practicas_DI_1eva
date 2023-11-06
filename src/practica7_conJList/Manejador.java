@@ -59,7 +59,7 @@ public class Manejador implements ActionListener, DocumentListener , ListSelecti
 
             int distancia= (int)punto1.calcularDistancia(punto2);
             System.out.println(distancia);
-            panelEjecutar.getCoordendas(x1,y1,distancia ,"RECTANGULO",colorBorde,colorInterno);
+            panelEjecutar.getCoordendas(x1,y1,distancia ,"CUADRADO",colorBorde,colorInterno);
             panelEjecutar.repaint();
 
         }
