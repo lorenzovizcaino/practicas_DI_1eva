@@ -17,6 +17,7 @@ class PanelDibujo extends JPanel{
 	String texto;
 	Color color;
 	PanelDibujo(){
+		setBorder(BorderFactory.createTitledBorder("Dibujar Frase"));
 		texto=new String();
 		color=Color.blue;
 	}
@@ -33,7 +34,13 @@ class PanelDibujo extends JPanel{
 		this.color=color;
 	}
 
-	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		setFont(new Font("Arial",Font.BOLD,15));
+		g.setColor(color);
+		g.drawString(texto,getWidth()/2,getHeight()/2);
+	}
 }
 
 
@@ -109,6 +116,7 @@ public class VentanaFrase extends JFrame {
 	PanelDibujo panelDibujo;
 	GBCConstrains gbc=new GBCConstrains();
 	Frase frase;
+	Color color;
 
 
 
@@ -136,15 +144,22 @@ public class VentanaFrase extends JFrame {
 	
 		botonPintar = new JButton();
 		botonPintar = new JButton("Pintar");
+		botonPintar.setEnabled(false);
 		
 		botonMostrar = new JButton("Mostrar");
+		botonMostrar.setEnabled(false);
+		panelDibujo=new PanelDibujo();
+
 
 		contenedor.add(JlFrase,gbc.Constrains(0,0,1,1,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
-		contenedor.add(cuadroFrase,gbc.Constrains(1,0,2,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
-		contenedor.add(botonProcesar,gbc.Constrains(0,1,1,5,0.0,0.0,GridBagConstraints.BOTH,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(cuadroFrase,gbc.Constrains(1,0,4,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(botonProcesar,gbc.Constrains(0,1,1,5,0.0,0.0,GridBagConstraints.BOTH,GridBagConstraints.CENTER,new Insets(5,25,5,25)));
 		contenedor.add(panelCentral,gbc.Constrains(1,1,2,5,0.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
-		contenedor.add(botonLimpiar,gbc.Constrains(1,6,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
-		contenedor.add(botonSalir,gbc.Constrains(2,6,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(botonLimpiar,gbc.Constrains(1,6,2,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(botonSalir,gbc.Constrains(0,6,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(panelDibujo,gbc.Constrains(3,1,2,5,1.0,0.0,GridBagConstraints.BOTH,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(botonPintar,gbc.Constrains(3,6,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
+		contenedor.add(botonMostrar,gbc.Constrains(4,6,1,1,1.0,0.0,GridBagConstraints.HORIZONTAL,GridBagConstraints.CENTER,new Insets(5,5,5,5)));
 
 
 		setSize(new Dimension(1200, 400));
@@ -162,6 +177,8 @@ public class VentanaFrase extends JFrame {
 			panelCentral.cuadros[2].setText(String.valueOf(frase.invertirFrase()));
 			panelCentral.cuadros[3].setText(String.valueOf(frase.separarPalabrasMio2()));
 			panelCentral.cuadros[4].setText(String.valueOf(frase.primeraVocal()));
+			botonMostrar.setEnabled(true);
+			botonPintar.setEnabled(true);
 
 		});
 
@@ -176,6 +193,16 @@ public class VentanaFrase extends JFrame {
 			panelCentral.cuadros[3].setText("");
 			panelCentral.cuadros[4].setText("");
 			cuadroFrase.setText("");
+		});
+
+		botonPintar.addActionListener(e->{
+			color=JColorChooser.showDialog(this,"Elige Color",Color.blue);
+		});
+
+		botonMostrar.addActionListener(e->{
+			panelDibujo.setTexto(cuadroFrase.getText());
+			panelDibujo.setColor(color);
+			panelDibujo.repaint();
 		});
 
 	}
