@@ -202,6 +202,8 @@ public class VentanaFrase extends JFrame {
 			cuadroFrase.setEnabled(true);
 			textoAsterisco="";
 			textoFrase="";
+			panelDibujo.setTexto("");
+			panelDibujo.repaint();
 		});
 
 		botonPintar.addActionListener(e->{
@@ -217,6 +219,7 @@ public class VentanaFrase extends JFrame {
 		cuadroFrase.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
+				e.consume();
 				textoFrase+=e.getKeyChar();
 				textoAsterisco+="*";
 				cuadroFrase.setText(textoAsterisco);
