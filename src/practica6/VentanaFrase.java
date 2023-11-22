@@ -11,6 +11,8 @@ import java.awt.Insets;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 class PanelDibujo extends JPanel{
@@ -117,6 +119,8 @@ public class VentanaFrase extends JFrame {
 	GBCConstrains gbc=new GBCConstrains();
 	Frase frase;
 	Color color;
+	String textoFrase="";
+	String textoAsterisco="";
 
 
 
@@ -171,7 +175,9 @@ public class VentanaFrase extends JFrame {
 
 		botonProcesar.addActionListener(e->{
 
-			frase=new Frase(cuadroFrase.getText());
+			frase=new Frase(textoFrase);
+			cuadroFrase.setText(textoFrase);
+			cuadroFrase.setEnabled(false);
 			panelCentral.cuadros[0].setText(String.valueOf(frase.contarLetras()));
 			panelCentral.cuadros[1].setText(String.valueOf(frase.contarPalabras()));
 			panelCentral.cuadros[2].setText(String.valueOf(frase.invertirFrase()));
@@ -193,6 +199,9 @@ public class VentanaFrase extends JFrame {
 			panelCentral.cuadros[3].setText("");
 			panelCentral.cuadros[4].setText("");
 			cuadroFrase.setText("");
+			cuadroFrase.setEnabled(true);
+			textoAsterisco="";
+			textoFrase="";
 		});
 
 		botonPintar.addActionListener(e->{
@@ -203,6 +212,27 @@ public class VentanaFrase extends JFrame {
 			panelDibujo.setTexto(cuadroFrase.getText());
 			panelDibujo.setColor(color);
 			panelDibujo.repaint();
+		});
+
+		cuadroFrase.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				textoFrase+=e.getKeyChar();
+				textoAsterisco+="*";
+				cuadroFrase.setText(textoAsterisco);
+
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+			}
 		});
 
 	}
