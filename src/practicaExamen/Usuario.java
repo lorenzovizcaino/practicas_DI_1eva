@@ -6,6 +6,10 @@ public class Usuario {
     public Usuario(String cadena) {
         this.cadena = cadena;
     }
+    public Usuario() {
+        this.cadena = "";
+    }
+
 
     public String getCadena() {
         return cadena;
@@ -14,9 +18,10 @@ public class Usuario {
     public void setCadena(String cadena) {
         this.cadena = cadena;
     }
-    public boolean comprobarCadena(String cadena){
+    public boolean comprobarCadena(){
         int longitud=cadena.length();
-        if (longitud>7 || longitud<13) return true;
+
+        if (longitud>7 && longitud<13) return true;
         else return false;
     }
 }
